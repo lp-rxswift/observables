@@ -89,7 +89,7 @@ example(of: "Create") {
     //observer.onCompleted()
     observer.onNext("?")
     return Disposables.create()
-  }.subscribe(onNext: { print($0) },
+    }.debug().subscribe(onNext: { print($0) },
               onError: { print($0) },
               onCompleted: { print("Completed") },
               onDisposed: { print("Disposed") })
@@ -140,7 +140,7 @@ example(of: "Single") {
 
       single(.success(contents))
       return disposable
-    }
+    }.debug()
   }
 
   loadText(from: "Copyright")
