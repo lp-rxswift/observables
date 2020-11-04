@@ -33,7 +33,13 @@ example(of: "Empty") {
 
 example(of: "Never") {
   let disposeBag = DisposeBag()
-  let observable = Observable<Void>.never()
+  let observable = Observable<Void>.never().do(onNext: {
+    print("DO on next")
+  }, onSubscribe: {
+    print("DO on subscribe")
+  }, onDispose: {
+    print("DO on dispose")
+  })
   observable.subscribe(onNext: { element in
     print(element)
   }, onCompleted: {
